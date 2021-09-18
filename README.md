@@ -8,13 +8,15 @@ First of all we deduct a specific amount from the mini wallets according to the 
 And if the amount is not satisfied from the given percentage then we can deduct amount from any type of wallet.
 But we put a restriction to a particular wallet to deduct only the percentage described and not more than that.
 
+NOTE: The core logic of algorithm is in calculateAmount function and others are for understanding purpose and for customisation.
+
 ## How to use this
 You can simply change the percentage array and mini wallet array and can give the total amount to be deducted from the mini wallets.
+
+NOTE: All the amounts should be positive.
 
 ## Result of algorithm
 Returns true if the amount need is satisfied otherwise false.
 
 ## Customisation
 I have used color to understand properly that amount is deducted from which type of coin and how much amount to left to be deducted more.
-
-NOTE: The core logic of algorithm is in calculateAmount function and others are for understanding purpose and for customisation.
