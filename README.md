@@ -14,5 +14,7 @@ You can simply change the percentage array and mini wallet array and can give th
 ## Result of algorithm
 Returns true if the amount need is satisfied otherwise false.
 
-## Cusomisation
+## Customisation
 I have used color to understand properly that amount is deducted from which type of coin and how much amount to left to be deducted more.
+
+NOTE: The core logic of algorithm is in calculateAmount function and others are for understanding purpose and for customisation.
