@@ -13,3 +13,6 @@ You can simply change the percentage array and mini wallet array and can give th
 
 ## Result of algorithm
 Returns true if the amount need is satisfied otherwise false.
+
+## Cusomisation
+I have used color to understand properly that amount is deducted from which type of coin and how much amount to left to be deducted more.
