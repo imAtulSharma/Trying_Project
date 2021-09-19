@@ -85,14 +85,14 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        int[] maxPercentage = {30, 10, 40, 20, 50};
+        int[] maxPercentage = {10, 20, 30, 20, 20};
 
-        int[] miniWallet = {49, 0, 0, 80, 0};
-        int totalAmount = 15;
+        int[] miniWallet = {3, 20, 550, 8, 100};
+        int totalAmount = 60;
 
         noOfDigits = getNumberOfDigits(findMax(miniWallet));
 
-        if(!calculateAmount(totalAmount, miniWallet, maxPercentage)) {
+        if(!calculateAmount(totalAmount, 0, miniWallet, maxPercentage)) {
             System.out.print(ConsoleColors.YELLOW + "\n\nError! Not sufficient money");
             return;
         }
@@ -111,19 +111,24 @@ public class Main {
      * @param maxPercentage maximum percentage to be deduct from the first round only
      * @return true if sufficient amount deducted otherwise false
      */
-    private static boolean calculateAmount(int totalAmount, int[] miniWallet, int[] maxPercentage) {
+    private static boolean calculateAmount(int totalAmount, int stationeryPosition, int[] miniWallet, int[] maxPercentage) {
         printArray(miniWallet, -1, ConsoleColors.GREEN);
         System.out.print("\tTotal Amount = " + totalAmount);
 
+        int actualAmount = totalAmount;
+
         // Deducting amounts only using their percentages
         for (int i = 0; totalAmount > 0 && i < 5; i++) {
-            int payableAmount = miniWallet[i] * maxPercentage[i] / 100;
-            if (totalAmount < payableAmount) {
-                miniWallet[i] -= totalAmount;
-                totalAmount -= totalAmount;
-            } else {
-                totalAmount -= payableAmount;
+            if (miniWallet[i] == 0) continue;
+
+            int payableAmount = actualAmount * maxPercentage[i] / 100;
+
+            if (payableAmount < miniWallet[i]) {
                 miniWallet[i] -= payableAmount;
+                totalAmount -= payableAmount;
+            } else {
+                totalAmount -= miniWallet[i];
+                miniWallet[i] -= miniWallet[i];
             }
             printArray(miniWallet, i, ConsoleColors.RED);
             System.out.print("\tTotal Amount = " + totalAmount);
@@ -132,7 +137,7 @@ public class Main {
         // Deducting the remaining amount from wallet
         for (int i = 0; totalAmount > 0 && i < 5; i++) {
             // This mini wallet is the stationery wallet we only can use specified percentage and not more than that
-            if (i == 3) {
+            if (i == stationeryPosition) {
                 printArray(miniWallet, i, ConsoleColors.YELLOW);
                 System.out.print("\tTotal Amount = " + totalAmount);
                 continue;
