@@ -12,6 +12,7 @@ NOTE: The core logic of algorithm is in calculateAmount function and others are 
 
 ## How to use this
 You can simply change the percentage array and mini wallet array and can give the total amount to be deducted from the mini wallets.
+You can also change the stationery wallet position from which only the specified percentage can be taken out means not more then that.
 
 NOTE: All the amounts should be positive.
 
