@@ -127,8 +127,13 @@ public class Main {
                 miniWallet[i] -= payableAmount;
                 totalAmount -= payableAmount;
             } else {
-                totalAmount -= miniWallet[i];
-                miniWallet[i] -= miniWallet[i];
+                if (totalAmount < miniWallet[i]) {
+                    miniWallet[i] -= totalAmount;
+                    totalAmount -= totalAmount;
+                } else {
+                    totalAmount -= miniWallet[i];
+                    miniWallet[i] -= miniWallet[i];
+                }
             }
             printArray(miniWallet, i, ConsoleColors.RED);
             System.out.print("\tTotal Amount = " + totalAmount);
