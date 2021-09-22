@@ -1,6 +1,6 @@
 package com.streamliners.expensemanager;
 
-public class Main {
+public class WalletAlgorithm {
     /**
      * Number of digits to be printed with blank spaces
      */
@@ -124,8 +124,13 @@ public class Main {
             int payableAmount = actualAmount * maxPercentage[i] / 100;
 
             if (payableAmount < miniWallet[i]) {
-                miniWallet[i] -= payableAmount;
-                totalAmount -= payableAmount;
+                if (totalAmount < payableAmount) {
+                    miniWallet[i] -= totalAmount;
+                    totalAmount -= totalAmount;
+                } else {
+                    totalAmount -= payableAmount;
+                    miniWallet[i] -= payableAmount;
+                }
             } else {
                 if (totalAmount < miniWallet[i]) {
                     miniWallet[i] -= totalAmount;
